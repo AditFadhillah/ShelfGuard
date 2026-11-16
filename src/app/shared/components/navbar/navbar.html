@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <span class="brand">ShelfGuard</span>
+  <a mat-button routerLink="/inventory" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+    Inventory
+  </a>
+  <a mat-button routerLink="/inventory/new" routerLinkActive="active">Add Item</a>
+  <a mat-button routerLink="/settings" routerLinkActive="active">Settings</a>
+
+  <span class="spacer"></span>
+
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Role</mat-label>
+    <mat-select [value]="auth.role()" (selectionChange)="auth.setRole($event.value)">
+      @for (role of roles; track role) {
+        <mat-option [value]="role">{{ role }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</mat-toolbar>

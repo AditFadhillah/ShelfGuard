@@ -1,0 +1,19 @@
+.brand {
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.active {
+  background: var(--mat-sys-secondary-container);
+}
+
+mat-toolbar {
+  gap: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: auto;
+}

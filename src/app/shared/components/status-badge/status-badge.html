@@ -1,0 +1,11 @@
+@switch (status()) {
+  @case ('In Stock') {
+    <mat-chip class="in-stock" disableRipple>In Stock</mat-chip>
+  }
+  @case ('Low Stock') {
+    <mat-chip class="low-stock" disableRipple>Low Stock</mat-chip>
+  }
+  @case ('Out of Stock') {
+    <mat-chip class="out-of-stock" disableRipple>Out of Stock</mat-chip>
+  }
+}

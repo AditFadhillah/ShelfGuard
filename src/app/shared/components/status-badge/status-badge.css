@@ -1,0 +1,14 @@
+.in-stock {
+  --mat-chip-elevated-container-color: #c8e6c9;
+  --mat-chip-label-text-color: #1b5e20;
+}
+
+.low-stock {
+  --mat-chip-elevated-container-color: #ffe0b2;
+  --mat-chip-label-text-color: #e65100;
+}
+
+.out-of-stock {
+  --mat-chip-elevated-container-color: #ffcdd2;
+  --mat-chip-label-text-color: #b71c1c;
+}
