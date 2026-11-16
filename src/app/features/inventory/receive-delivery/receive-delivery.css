@@ -1,0 +1,14 @@
+.summary {
+  padding-top: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,88 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add Inventory Item</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>SKU</mat-label>
+        <input matInput formControlName="sku" placeholder="ABC-12345" autocomplete="off" />
+        @if (skuPending()) {
+          <mat-spinner matSuffix diameter="20" />
+        }
+        <mat-hint>Format: three capital letters, a dash, five digits</mat-hint>
+        @if (form.controls.sku.hasError('required')) {
+          <mat-error>SKU is required</mat-error>
+        } @else if (form.controls.sku.hasError('pattern')) {
+          <mat-error>SKU must look like ABC-12345</mat-error>
+        } @else if (form.controls.sku.hasError('skuTaken')) {
+          <mat-error>SKU already exists</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          @for (category of categories; track category) {
+            <mat-option [value]="category">{{ category }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>Category is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Initial Stock</mat-label>
+        <input matInput type="number" formControlName="stock" min="0" step="1" />
+        @if (form.controls.stock.hasError('required')) {
+          <mat-error>Initial stock is required</mat-error>
+        } @else {
+          <mat-error>Enter a whole number, 0 or more</mat-error>
+        }
+      </mat-form-field>
+
+      <h2>Suppliers</h2>
+      <div formArrayName="suppliers" class="suppliers">
+        @for (supplier of suppliers.controls; track supplier; let i = $index) {
+          <div [formGroupName]="i" class="supplier-row">
+            <mat-form-field class="supplier-name">
+              <mat-label>Supplier name</mat-label>
+              <input matInput formControlName="name" />
+              <mat-error>Supplier name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Lead time (days)</mat-label>
+              <input matInput type="number" formControlName="leadTimeDays" min="0" step="1" />
+              <mat-error>Enter a whole number, 0 or more</mat-error>
+            </mat-form-field>
+
+            <button
+              mat-icon-button
+              type="button"
+              [attr.aria-label]="'Remove supplier ' + (i + 1)"
+              [disabled]="suppliers.length === 1"
+              (click)="removeSupplier(i)"
+            >
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+          </div>
+        }
+      </div>
+
+      <div class="actions">
+        <button mat-button type="button" (click)="addSupplier()">
+          <mat-icon>add</mat-icon>
+          Add Supplier
+        </button>
+        <button mat-flat-button type="submit" [disabled]="!canSubmit()">Add Item</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
