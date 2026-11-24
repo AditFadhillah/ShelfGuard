@@ -11,6 +11,11 @@
 npm-debug.log
 yarn-error.log
 
+# Environment
+.env
+.env.local
+.env.*.local
+
 # IDEs and editors
 .idea/
 .project
@@ -21,13 +26,15 @@ yarn-error.log
 *.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-.history/*
+.vscode/
+.history/
+
+# Agentic reasoning & AI tools folders
+.agents/
+.angular/
+.cursor/
+.claude/
+.devin/
 
 # Miscellaneous
 /.angular/cache
@@ -39,6 +46,17 @@ testem.log
 /typings
 __screenshots__/
 
+# Documentation (learning materials - local only)
+LEARNING_ROADMAP.md
+QUICKSTART.md
+POSTGRES_PRISMA_GUIDE.md
+SETUP_COMPLETE.md
+SETUP_SUMMARY.md
+README_POSTGRES_PRISMA.md
+
 # System files
 .DS_Store
 Thumbs.db
+
+# Prisma
+.env.local
