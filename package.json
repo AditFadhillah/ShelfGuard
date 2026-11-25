@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:server": "tsx server/src/server.ts",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -23,6 +24,7 @@
     "@angular/material": "^21.2.14",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@fastify/cors": "^11.4.3",
     "@prisma/adapter-pg": "^7.10.1",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
